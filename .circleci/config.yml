@@ -15,9 +15,13 @@ jobs:
 # Debug
       - run: ls -R
       - run: java -version
+
+# Debug
+      - run: cd ./sahi
+      - run: pwd
+      - run: ls
       
 # Install Sahi Pro using the following command
-      - run: cd ./sahi
       - run: java -jar install_sahi_pro_v750_20171222.jar silent_install.xml
 
 # Start Sahi Pro 
