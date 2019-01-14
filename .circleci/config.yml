@@ -6,3 +6,5 @@ jobs:
       - checkout
       - run: echo "A first hello"
       - run: pwd
+      - run: cd /sahi
+      - run: ls
