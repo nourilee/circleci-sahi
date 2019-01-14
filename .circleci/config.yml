@@ -13,6 +13,10 @@ jobs:
       - run: mkdir sahi_pro
       - run: mv install_sahi_pro_v750_20171222.jar sahi_pro
 
+#Debug
+      - run: ls -R
+      - run: java -version
+      
 # Install Sahi Pro using the following command
       - run: java -jar install_sahi_pro_v750_20171222.jar silent_install.xml
 
