@@ -7,3 +7,15 @@ jobs:
       - run: echo "A first hello"
       - run: pwd
       - run: ls -R
+      
+# Copy the Sahi Pro installer jar to the desired location.
+      - run: wget http://sahipro.com/static/builds/pro/install_sahi_pro_v750_20171222.jar
+      - run: mkdir sahi_pro
+      - run: mv install_sahi_pro_v750_20171222.jar sahi_pro
+
+# Install Sahi Pro using the following command
+      - run: java -jar install_sahi_pro_v600_20141015.jar silent_install.xml
+
+# Start Sahi Pro 
+      - run: cd /home/circleci/project/sahi_pro/userdata/bin
+      - run: ./start_sahi.sh
