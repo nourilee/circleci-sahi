@@ -20,5 +20,5 @@ jobs:
       - run: cd ./sahi && java -jar install_sahi_pro_v750_20171222.jar silent_install.xml
 
 # Start Sahi Pro 
-      - run: cd /home/circleci/project/sahi/userdata/bin
-      - run: ./start_sahi.sh
+#     - run: cd /home/circleci/project/sahi/userdata/bin
+#     - run: ./start_sahi.sh
