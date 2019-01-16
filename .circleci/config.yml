@@ -15,7 +15,7 @@ jobs:
       - run: firefox --version
 
 # Debug
-      - run: cd ./sahi && pwd
+      - run: cd ./sahi_pro && pwd
       
 # Install Sahi Pro using the following command
       - run: cd ./sahi && java -jar install_sahi_pro_v750_20171222.jar silent_install.xml
