@@ -4,7 +4,7 @@
  * Copyright Tyto Software Pvt. Ltd.
  */
 -->
-<project name="demo" default="runtestsie">
+<project name="demo" default="runtestschrome">
 	<taskdef name="sahi" classname="net.sf.sahi.ant.RunSahiTask" classpath="lib/ant-sahi.jar"/>
 	
 	<target name="set_timestamp">
@@ -14,10 +14,10 @@
 	</target>
 	
 	
-	<target name="set_properties_ie" depends="set_timestamp">
+	<target name="set_properties_chrome" depends="set_timestamp">
     	<property name="scriptDir" value="~/sahi/userdata/scripts/"/>
     	<property name="scriptName" value="1_addNewInterview.sah"/>
-		<property name="browser" value="ie"/>
+		<property name="browser" value="chrome"/>
 		<property name="startWith" value="desktopbrowser"/>
 		<property name="sendemail" value="false"/>
 		<property name="emailtrigger" value="success,failure"/>
@@ -36,7 +36,7 @@
 		<property name="jsCodeCoverage" value="false"/>
 	</target>
 
-	<target name="runtestsie" depends="set_properties_ie">
+	<target name="runtestschrome" depends="set_properties_chrome">
 		<sahi suite="${scriptName}"
 			browsertype="${browser}"
 			startWith="${startWith}"
@@ -58,10 +58,10 @@
 			threads="${threads}"
 			jsCodeCoverage="${jsCodeCoverage}">
 		</sahi>
-		<antcall target="failsahiie"/>
+		<antcall target="failsahichrome"/>
 	</target>
 
-    <target name="failsahiie" depends="set_properties_ie" if="sahi.failed.${browser}">
+    <target name="failsahichrome" depends="set_properties_chrome" if="sahi.failed.${browser}">
         <fail message="Sahi tests failed on browser ${browser}!"/>
     </target>		
 </project>
