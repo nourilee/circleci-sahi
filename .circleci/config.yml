@@ -12,7 +12,7 @@ jobs:
 # Debug
       - run: ls -R
       - run: java -version
-      - run
+      - run: firefox --version
 
 # Debug
       - run: cd ./sahi && pwd
