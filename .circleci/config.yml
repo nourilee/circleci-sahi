@@ -20,4 +20,4 @@ jobs:
       - run: cd ./sahi && java -jar install_sahi_pro_v750_20171222.jar silent_install.xml
       
 # Run tests
-      - run: cd ./sahi/userdata/bin &&  testrunner.sh
+      - run: cd ./sahi/userdata/bin &&  sh testrunner.sh
