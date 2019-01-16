@@ -5,4 +5,9 @@ jobs:
       - image: circleci/openjdk:8-jdk-browsers
     steps:
       - checkout
+      
+      # debug
+      - run: cd ./sahi && pwd && ls
+      
+      # test
       - run: cd ./sahi && ant -buildfile build.xml
