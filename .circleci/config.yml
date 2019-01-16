@@ -18,9 +18,6 @@ jobs:
       
 # Install Sahi Pro using the following command
       - run: cd ./sahi && java -jar install_sahi_pro_v750_20171222.jar silent_install.xml
-
-# Start Sahi Pro 
-#     - run: cd ./sahi/userdata/bin && ./start_sahi.sh
-
+      
 # Run tests
-      - run: cd ./sahi/userdata/bin && ./drun.sh
+      - run: cd ./sahi/userdata/bin &&  testrunner.sh
