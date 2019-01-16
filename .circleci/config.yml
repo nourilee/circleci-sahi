@@ -12,6 +12,7 @@ jobs:
 # Debug
       - run: ls -R
       - run: java -version
+      - run
 
 # Debug
       - run: cd ./sahi && pwd
@@ -23,4 +24,4 @@ jobs:
       - run: cd ./sahi/userdata/bin &&  sh testrunner.sh
       
 # Run tests
-      - run: cd ./sahi/userdata/bin &&  sh testrunner.sh 1_addNewInterview.sah "https://test.launchpadrecruitsapp.com/login" "none;java"
+      - run: cd ./sahi/userdata/bin &&  sh testrunner.sh 1_addNewInterview.sah "https://test.launchpadrecruitsapp.com/login" firefox
