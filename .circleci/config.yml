@@ -1,13 +1,26 @@
-version: 2.0
+version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/openjdk:8-jdk-browsers
+    machine: true
     steps:
       - checkout
       
-      # debug
-      - run: cd ./sahi && pwd && ls
+# Copy the Sahi Pro installer jar to the desired location.
+      - run: wget http://sahipro.com/static/builds/pro/install_sahi_pro_v750_20171222.jar
+      - run: mv install_sahi_pro_v750_20171222.jar sahi
+
+# Debug
+      - run: ls -R
+      - run: java -version
+
+# Debug
+      - run: cd ./sahi && pwd
       
-      # test
-      - run: cd ./sahi && ant -buildfile build.xml
+# Install Sahi Pro using the following command
+      - run: cd ./sahi && java -jar install_sahi_pro_v750_20171222.jar silent_install.xml
+
+# Start Sahi Pro 
+     - run: cd ./sahi/userdata/bin && ./start_sahi.sh
+
+# Run tests
+    - run: cd ./sahi/userdata/bin && ./drun.sh
