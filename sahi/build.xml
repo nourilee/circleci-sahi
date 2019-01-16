@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+/**
+ * Copyright Tyto Software Pvt. Ltd.
+ */
+-->
+<project name="demo" default="runmultiplebrowsers">
+	<taskdef name="sahi" classname="net.sf.sahi.ant.RunSahiTask" classpath="lib/ant-sahi.jar"/>
+	
+	<target name="set_timestamp">
+        <tstamp>
+            <format property="ts" pattern="yyyy_MM_dd__HH_mm_ss" locale="en, IN"/>
+        </tstamp>
+	</target>
+		<target name="runmultiplebrowsers">
+        <parallel>
+			<antcall target="runtestschrome"/>
+			<antcall target="runtestsie"/>
+        </parallel>
+    </target>
+	
+	<target name="set_properties_chrome" depends="set_timestamp">
+    	<property name="scriptDir" value="./sahi/userdata/scripts/"/>
+    	<property name="scriptName" value="1_addNewInterview.sah"/>
+		<property name="browser" value="chrome"/>
+		<property name="startWith" value="desktopbrowser"/>
+		<property name="sendemail" value="false"/>
+		<property name="emailtrigger" value="success,failure"/>
+		<property name="emailproperties" value=".\sahi\userdata\config\email.properties"/>
+		<property name="sendemailperiodically" value="false"/>
+		<property name="sendemailperiodicallytime" value=""/>
+		<property name="emailPasswordHidden" value="true"/>
+		<property name="baseURL" value="https://test.launchpadrecruitsapp.com/login"/>
+		<property name="host" value="localhost"/>
+		<property name="port" value="9999"/>
+		<property name="singlesession" value="false"/>
+		<property name="threads" value="5"/>
+		<property name="showPeriodicSummary" value="true"/>
+		<property name="failedSuiteName" value="1_addNewInterview.sah"/>
+		<property name="failedSuite" value="/${failedSuiteName}"/>
+		<property name="jsCodeCoverage" value="false"/>
+	</target>
+
+	<target name="runtestschrome" depends="set_properties_chrome">
+		<sahi suite="${scriptName}"
+			browsertype="${browser}"
+			startWith="${startWith}"
+			sendemail="${sendemail}"
+	        emailtrigger="${emailtrigger}"
+	        emailproperties="${emailproperties}"
+	        sendEmailPeriodically="${sendemailperiodically}"
+			sendEmailPeriodicallyTime="${sendemailperiodicallytime}"
+			emailPasswordHidden="${emailPasswordHidden}"
+			baseurl="${baseURL}"
+			sahihost="${host}"
+			sahiport="${port}"
+			scriptsPathMaster="${scriptDir}"
+			failureproperty="sahi.failed.${browser}"
+			failedSuiteName="${failedSuiteName}"
+			haltonfailure="false"
+			singlesession="${singlesession}"
+			showPeriodicSummary="${showPeriodicSummary}"
+			threads="${threads}"
+			jsCodeCoverage="${jsCodeCoverage}">
+		</sahi>
+		<antcall target="failsahichrome"/>
+	</target>
+
+    <target name="failsahichrome" depends="set_properties_chrome" if="sahi.failed.${browser}">
+        <fail message="Sahi tests failed on browser ${browser}!"/>
+    </target>	
+	<target name="set_properties_ie" depends="set_timestamp">
+    	<property name="scriptDir" value="./sahi/userdata/scripts/"/>
+    	<property name="scriptName" value="1_addNewInterview.sah"/>
+		<property name="browser" value="ie"/>
+		<property name="startWith" value="desktopbrowser"/>
+		<property name="sendemail" value="false"/>
+		<property name="emailtrigger" value="success,failure"/>
+		<property name="emailproperties" value=".sahi\userdata\config\email.properties"/>
+		<property name="sendemailperiodically" value="false"/>
+		<property name="sendemailperiodicallytime" value=""/>
+		<property name="emailPasswordHidden" value="true"/>
+		<property name="baseURL" value="https://test.launchpadrecruitsapp.com/login"/>
+		<property name="host" value="localhost"/>
+		<property name="port" value="9999"/>
+		<property name="singlesession" value="false"/>
+		<property name="threads" value="5"/>
+		<property name="showPeriodicSummary" value="true"/>
+		<property name="failedSuiteName" value="1_addNewInterview.sah"/>
+		<property name="failedSuite" value="/${failedSuiteName}"/>
+		<property name="jsCodeCoverage" value="false"/>
+	</target>
+
+	<target name="runtestsie" depends="set_properties_ie">
+		<sahi suite="${scriptName}"
+			browsertype="${browser}"
+			startWith="${startWith}"
+			sendemail="${sendemail}"
+	        emailtrigger="${emailtrigger}"
+	        emailproperties="${emailproperties}"
+	        sendEmailPeriodically="${sendemailperiodically}"
+			sendEmailPeriodicallyTime="${sendemailperiodicallytime}"
+			emailPasswordHidden="${emailPasswordHidden}"
+			baseurl="${baseURL}"
+			sahihost="${host}"
+			sahiport="${port}"
+			scriptsPathMaster="${scriptDir}"
+			failureproperty="sahi.failed.${browser}"
+			failedSuiteName="${failedSuiteName}"
+			haltonfailure="false"
+			singlesession="${singlesession}"
+			showPeriodicSummary="${showPeriodicSummary}"
+			threads="${threads}"
+			jsCodeCoverage="${jsCodeCoverage}">
+		</sahi>
+		<antcall target="failsahiie"/>
+	</target>
+
+    <target name="failsahiie" depends="set_properties_ie" if="sahi.failed.${browser}">
+        <fail message="Sahi tests failed on browser ${browser}!"/>
+    </target>		
+</project>
