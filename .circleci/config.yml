@@ -5,23 +5,11 @@ jobs:
     steps:
       - checkout
       
-# Copy the Sahi Pro installer jar to the desired location.
-      - run: wget http://sahipro.com/static/builds/pro/install_sahi_pro_v750_20171222.jar
-      - run: mv install_sahi_pro_v750_20171222.jar sahi
-
+# Debug - Verify Ant version
+      - run: ant -version
+      
 # Debug
-      - run: ls -R
-      - run: java -version
-      - run: firefox --version
-
-# Debug
-      - run: cd ./sahi && pwd
-      
-# Install Sahi Pro using the following command
-      - run: cd ./sahi && java -jar install_sahi_pro_v750_20171222.jar silent_install.xml
-      
-# Run tests
-      - run: cd ./sahi/userdata/bin &&  sh testrunner.sh
-      
-# Run tests
-      - run: cd ./sahi/userdata/bin &&  sh testrunner.sh 1_addNewInterview.sah "https://test.launchpadrecruitsapp.com/login" firefox
+      - run: pwd && ls -r
+         
+# Run tests - Playback via ant
+      - run: ant -f build.xml

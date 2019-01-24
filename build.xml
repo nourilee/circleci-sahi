@@ -16,7 +16,7 @@
 	
 	<target name="set_properties_chrome" depends="set_timestamp">
     	<property name="scriptDir" value="~/sahi/userdata/scripts/"/>
-    	<property name="scriptName" value="1_addNewInterview.sah"/>
+    	<property name="scriptName" value="test01.sah"/>
 		<property name="browser" value="chrome"/>
 		<property name="startWith" value="desktopbrowser"/>
 		<property name="sendemail" value="false"/>
@@ -26,12 +26,12 @@
 		<property name="sendemailperiodicallytime" value=""/>
 		<property name="emailPasswordHidden" value="true"/>
 		<property name="baseURL" value="https://test.launchpadrecruitsapp.com/login"/>
-		<property name="host" value="localhost"/>
+		<property name="host" value="112.201.136.23"/>
 		<property name="port" value="9999"/>
 		<property name="singlesession" value="true"/>
 		<property name="threads" value="5"/>
 		<property name="showPeriodicSummary" value="true"/>
-		<property name="failedSuiteName" value="1_addNewInterview.sah"/>
+		<property name="failedSuiteName" value="test01.sah"/>
 		<property name="failedSuite" value="/${failedSuiteName}"/>
 		<property name="jsCodeCoverage" value="false"/>
 	</target>
