@@ -10,6 +10,7 @@ jobs:
     
 # Debug
       - run: pwd && ls -r
+      - run: nc -vz 112.201.136.23 9999
          
 # Run tests - Playback via ant
       - run: ant -f build.xml
