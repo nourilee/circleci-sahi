@@ -13,4 +13,4 @@ jobs:
       - run: nc -vz 112.201.136.23 9999
          
 # Run tests - Playback via ant
-      - run: ant -f build.xml
+##      - run: ant -f build.xml
