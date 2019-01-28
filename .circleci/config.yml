@@ -31,4 +31,3 @@ jobs:
       
 # Sample Test
       - run: cd ./sahi/sahi_pro_runner/userdata/bin && sh testrunner.sh demo/sahi_demo.sah http://sahi.co.in/demo/ firefoxHL
-
