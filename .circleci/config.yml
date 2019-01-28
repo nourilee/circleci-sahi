@@ -23,6 +23,6 @@ jobs:
 # Debug - Verify Installation
       - run: cd ~
       - run: ls -R
-      - run: cd ./sahi_pro/userdata/bin && start_sahi.sh
+      - run: cd ./sahi/userdata/bin && start_sahi.sh
 
 
