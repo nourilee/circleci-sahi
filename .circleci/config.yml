@@ -11,6 +11,9 @@ jobs:
 # Debug - Verify Ant version
       - run: ant -version
       
+# Debug - Verify Firefox version
+      - run: firefox --version
+      
 # Download Sahi Pro Installer
       - run: wget http://sahipro.com/static/builds/pro/install_sahi_pro_v750_20171222.jar
       
@@ -22,7 +25,10 @@ jobs:
 
 # Debug - Verify Installation
       - run: cd ~
-      - run: ls -R
-      - run: cd ./sahi/sahi_pro_runner/userdata/bin && start_sahi.sh
+##      - run: ls -R
+##      - run: cd ./sahi/sahi_pro_runner/userdata/bin && start_sahi.sh
+      - run: cd ./sahi/sahi_pro_runner/userdata/bin && ls -R
+# Sample Test
+      - run: cd ./sahi/sahi_pro_runner/userdata/bin && sh testrunner.sh demo/sahi_demo.sah http://sahi.co.in/demo/ firefoxHL
 
 
