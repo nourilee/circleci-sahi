@@ -32,5 +32,5 @@ jobs:
 # Sample Test
       - run:
             command: |
-                sshpass -p -3aD-pcOhGRAsfdZ?$Ovu6Q(IwDDR&zl Administrator@18.130.251.90
+                sshpass -p '3aD-pcOhGRAsfdZ?$Ovu6Q(IwDDR&zl' ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90
                 ssh Administrator@18.130.251.90 'echo Hello World'
