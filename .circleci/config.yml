@@ -32,8 +32,5 @@ jobs:
 # Sample Test
       - run:
             command: |
-                spawn ssh Administrator@18.130.251.90
-                expect "assword:"
-                send "-3aD-pcOhGRAsfdZ?$Ovu6Q(IwDDR&zl\r"
-                interact
+                sshpass -p -3aD-pcOhGRAsfdZ?$Ovu6Q(IwDDR&zl Administrator@18.130.251.90
                 ssh Administrator@18.130.251.90 'echo Hello World'
