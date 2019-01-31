@@ -8,5 +8,4 @@ jobs:
 # Sample Test
       - run: sudo rm /var/lib/apt/lists/lock || true
       - run: sudo apt-get clean && sudo apt-get update && sudo apt-get install sshpass -f 
-      - run: sshpass -p '3aD-pcOhGRAsfdZ?$Ovu6Q(IwDDR&zl' ssh -l root Administrator@18.130.251.90
-      - run: ssh Administrator@18.130.251.90 'echo Hello World'
+      - run: sshpass -p '-3aD-pcOhGRAsfdZ?$Ovu6Q(IwDDR&zl' ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 'echo Hello World'
