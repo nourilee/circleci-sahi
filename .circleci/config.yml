@@ -31,3 +31,4 @@ jobs:
       
 # Sample Test
       - run: ssh Administrator@18.130.251.90 'echo %CD%'
+      - run: expect "password:" && send "-3aD-pcOhGRAsfdZ?$Ovu6Q(IwDDR&zl\r"
