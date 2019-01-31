@@ -32,5 +32,5 @@ jobs:
 # Sample Test
       - run: sudo apt-get update
       - run: sudo apt-get install sshpass
-      - run: sshpass -p '3aD-pcOhGRAsfdZ?$Ovu6Q(IwDDR&zl' ssh Administrator@18.130.251.90
+      - run: sshpass -p '3aD-pcOhGRAsfdZ?$Ovu6Q(IwDDR&zl' ssh -l root Administrator@18.130.251.90
       - run: ssh Administrator@18.130.251.90 'echo Hello World'
