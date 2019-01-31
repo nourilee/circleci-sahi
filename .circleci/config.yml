@@ -4,33 +4,8 @@ jobs:
     machine: true
     steps:
       - checkout
-      
-# Debug - Verify Java version
-      - run: java -version
-      
-# Debug - Verify Ant version
-      - run: ant -version
-      
-# Debug - Verify Firefox version
-      - run: firefox --version
-      
-# Download Sahi Pro Installer
-      - run: wget http://sahipro.com/static/builds/pro/install_sahi_pro_v750_20171222.jar
-      
-# Move/Copy Sahi Pro
-      - run: mv install_sahi_pro_v750_20171222.jar sahi
-
-# Install Sahi
-      - run: cd sahi && java -jar install_sahi_pro_v750_20171222.jar silent_install.xml
-
-# Debug - Verify Installation
-      - run: cd ~
-##      - run: ls -R
-##      - run: cd ./sahi/sahi_pro_runner/userdata/bin && start_sahi.sh
-      - run: cd ./sahi/sahi_pro_runner/userdata/bin && ls -R
-      
+ 
 # Sample Test
-      - run: sudo apt-get update || true  
-      - run: sudo apt-get install sshpass || true
+      - run: sudo apt-get update && sudo apt-get install sshpass
       - run: sshpass -p '3aD-pcOhGRAsfdZ?$Ovu6Q(IwDDR&zl' ssh -l root Administrator@18.130.251.90
       - run: ssh Administrator@18.130.251.90 'echo Hello World'
