@@ -28,6 +28,7 @@ jobs:
 ##      - run: ls -R
 ##      - run: cd ./sahi/sahi_pro_runner/userdata/bin && start_sahi.sh
       - run: cd ./sahi/sahi_pro_runner/userdata/bin && ls -R
+      - run: echo "password" | sudo -S 
       - run: ./setup_ssh.sh 18.130.251.90 Administrator
       
 # Sample Test
