@@ -28,9 +28,10 @@ jobs:
 ##      - run: ls -R
 ##      - run: cd ./sahi/sahi_pro_runner/userdata/bin && start_sahi.sh
       - run: cd ./sahi/sahi_pro_runner/userdata/bin && ls -R
+      - run: ./setup_ssh.sh
       
 # Sample Test
       - run:
             command: |
               echo Running test
-              ls -al ~/.ssh/id_*.pub
+              ssh Administrator@18.130.251.90 'echo %CD%'
