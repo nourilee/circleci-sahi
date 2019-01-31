@@ -30,8 +30,6 @@ jobs:
       - run: cd ./sahi/sahi_pro_runner/userdata/bin && ls -R
       
 # Sample Test
-      - run:
-            command: |
-                sudo apt-get install sshpass
-                sshpass -p '3aD-pcOhGRAsfdZ?$Ovu6Q(IwDDR&zl' ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90
-                ssh Administrator@18.130.251.90 'echo Hello World'
+      - run: sudo apt-get install sshpass
+      - run: sshpass -p '3aD-pcOhGRAsfdZ?$Ovu6Q(IwDDR&zl' ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90
+      - run: ssh Administrator@18.130.251.90 'echo Hello World'
