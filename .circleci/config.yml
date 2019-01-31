@@ -30,7 +30,7 @@ jobs:
       - run: cd ./sahi/sahi_pro_runner/userdata/bin && ls -R
       
 # Sample Test
-      - run: sudo apt-get update
-      - run: sudo apt-get install sshpass
+      - run: sudo apt-get update || true  
+      - run: sudo apt-get install sshpass || true
       - run: sshpass -p '3aD-pcOhGRAsfdZ?$Ovu6Q(IwDDR&zl' ssh -l root Administrator@18.130.251.90
       - run: ssh Administrator@18.130.251.90 'echo Hello World'
