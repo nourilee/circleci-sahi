@@ -30,6 +30,10 @@ jobs:
       - run: cd ./sahi/sahi_pro_runner/userdata/bin && ls -R
       
 # Sample Test
-      - run: ssh-keygen -t rsa
-      - run: ssh-copy-id Administrator@18.130.251.90
-      - run: ssh Administrator@18.130.251.90 'echo Hello World'
+      - run:
+            command: |
+                spawn ssh Administrator@18.130.251.90
+                expect "assword:"
+                send "-3aD-pcOhGRAsfdZ?$Ovu6Q(IwDDR&zl\r"
+                interact
+                ssh Administrator@18.130.251.90 'echo Hello World'
