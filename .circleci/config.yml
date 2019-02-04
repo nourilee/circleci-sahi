@@ -9,4 +9,4 @@ jobs:
       - run: sudo apt-get clean && sudo apt-get update && sudo apt-get install sshpass -f 
 
 # Run a step to execute multiple commands on server via sshpass
-      - run: sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:\Users\Administrator\Documents\GitHub\circleci-sahi\ && git fetch origin"; "cd C:\Users\Administrator\Documents\GitHub\circleci-sahi\ && .\testSahi.bat"
+      - run: sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:\Users\Administrator\Documents\GitHub\circleci-sahi\ && git checkout master && git pull --rebase origin"; "cd C:\Users\Administrator\Documents\GitHub\circleci-sahi\ && .\testSahi.bat"
