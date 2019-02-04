@@ -9,4 +9,4 @@ jobs:
       - run: sudo apt-get clean && sudo apt-get update && sudo apt-get install sshpass -f 
 
 # Run a step to execute testSahi.bat on server via sshpass
-      - run: cat testSahi.bat | sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90
+      - run: cat ./testSahi.bat | sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90
