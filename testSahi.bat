@@ -1,10 +1,3 @@
-:: This will start Git bash shell scripting
-cd C:\Program Files\Git\bin && start sh.exe
-
-:: This will execute git commands
-cd C:/Users/Administrator/Documents/GitHub/circleci-sahi && git pull origin master
-exit
-
 :: This will copy scripts from repository to the sahi directory
 xcopy /s/y C:\Users\Administrator\Documents\GitHub\circleci-sahi\scripts C:\Users\Administrator\sahi_pro\userdata\scripts
 
