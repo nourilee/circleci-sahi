@@ -13,6 +13,4 @@ jobs:
       - run:
           command: |
             sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:\Program Files\Git\bin && start sh.exe";
-            "cd C:/Users/Administrator/Documents/GitHub/circleci-sahi && git pull origin master"; "exit"; 
-            "xcopy /s C:\Users\Administrator\Documents\GitHub\circleci-sahi\scripts C:\Users\Administrator\sahi_pro\userdata\scripts";
-            "cd C:\Users\Administrator\sahi_pro\userdata\bin && testrunner.bat testSmoke.suite https://qa.launchpadrecruitsapp.com/login ie"
+            "cd C:/Users/Administrator/Documents/GitHub/circleci-sahi && git pull origin master"; "./testSahi.bat"; 
