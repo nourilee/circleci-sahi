@@ -13,4 +13,5 @@ jobs:
       - run:
           command: |
             sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:\Program Files\Git\bin && start sh.exe";
+            "pwd";
             "cd C:/Users/Administrator/Documents/GitHub/circleci-sahi && git pull origin master"; "./testSahi.bat"; 
