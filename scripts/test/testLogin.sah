@@ -1,0 +1,13 @@
+//_setValue(_emailbox("user[email]"), "nourilee+qatest@launchpadrecruits.com");
+//_setPassword(_password("user[password]"), "cRpNF1R6Al53IBkFFjxBNA==");
+//_click(_submit("Login"));
+
+function login($user, $password){
+	_setValue(_emailbox("user[email]"), $user);
+	_setPassword(_password("user[password]"), $password);
+	_click(_submit("Login"));
+}
+
+login("nourilee+qatest@launchpadrecruits.com", "cRpNF1R6Al53IBkFFjxBNA==");
+
+_click(_link("Logout"));
