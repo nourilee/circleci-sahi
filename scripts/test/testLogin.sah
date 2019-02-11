@@ -1,13 +1,59 @@
-//_setValue(_emailbox("user[email]"), "nourilee+qatest@launchpadrecruits.com");
-//_setPassword(_password("user[password]"), "cRpNF1R6Al53IBkFFjxBNA==");
-//_click(_submit("Login"));
 
+login("nourilee+qatest@launchpadrecruits.com", "cRpNF1R6Al53IBkFFjxBNA==");
+_click(_link("Logout"));
+
+// login passing user and password
 function login($user, $password){
 	_setValue(_emailbox("user[email]"), $user);
 	_setPassword(_password("user[password]"), $password);
 	_click(_submit("Login"));
 }
 
-login("nourilee+qatest@launchpadrecruits.com", "cRpNF1R6Al53IBkFFjxBNA==");
-
-_click(_link("Logout"));
+// onScriptEnd is a callback called by Sahi when script finishes
+function onScriptEnd(){
+	postTestuff("atest_id", _scriptStatus());
+}
+ 
+function encode(source) {
+	var enc = new Packages.sun.misc.BASE64Encoder();
+	var src = new java.lang.String(source);
+	return (enc.encode(src.getBytes()));
+}
+ 
+// Please call the postTestuff method with all its parameter and check.
+// postTestuff("763993f3929542f50a3a0dd2b259876a","passed");
+ 
+function postTestuff(test_id, status, steps_failed, steps_passed, steps_blocked,
+lab_name, version, run_configuration, comment, branch_name) {
+	var login = "nourilee@gmail.com";
+	var password = "a!masterPass19";
+	var authKey = "Testuff API";
+	 
+	// Replace the X with your server number, as found under Settings-->Company details
+	var url = "https://app.testuff.com/api/v0/run/";
+	 
+	var data = {
+		"test_id" : test_id,
+		"status" : status,
+		"steps_failed" : steps_failed,
+		"steps_passed" : steps_passed,
+		"steps_blocked" : steps_blocked,
+		"lab_name" : lab_name,
+		"version" : version,
+		"run_configuration" : run_configuration,
+		"branch_name" : branch_name,
+		"comment" : comment
+	}
+	 
+	var $request = new RESTRequest();
+	$request.setURL(url);
+	$request.setCredentials(login, pass, authKey);
+	$request.setHeader("Content-Type", "application/json");
+	$request.setHeader("Accept", "application/xml");
+	$request.$body = _sahi.toJSON(data);
+	var $response = $request.submit("post"); // changed get to post
+	var $responseCode = $response.getResponseCode();
+	_log("Response code:" + $responseCode);
+	var $body = $response.getBodyAsString(); // returns the response as XML
+	// _log($body);
+}

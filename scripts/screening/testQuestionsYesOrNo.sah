@@ -1,0 +1,42 @@
+function getTimeStamp() {
+	return (new Date()).toString();
+}
+
+// login passing user and password
+function login($user, $password){
+	_setValue(_emailbox("user[email]"), $user);
+	_setPassword(_password("user[password]"), $password);
+	_click(_submit("Login"));
+}
+
+/**
+* addInterviewScreeningOnly
+*/
+function addInterviewScreeningOnly(){
+	_click(_link("Add new interview"));
+	_click(_link("Assessment"));
+	_click(_label("Screening"));
+	_click(_button("Continue"));
+}
+
+/* --Functions Above-- */
+login("nourilee+qatest@launchpadrecruits.com", "cRpNF1R6Al53IBkFFjxBNA==");
+
+addInterviewScreeningOnly();
+_setValue(_textbox("job[title]"),"");
+
+var $timestamp = getTimeStamp();
+_setValue(_textbox("job[title]"),"QA Automation - "+ $timestamp);
+
+_setValue(_textbox("job[interview_attributes][deadline]"), "31/12/2019");
+_click(_link("31"));
+_removeFocus(_textbox("job[interview_attributes][deadline]"))
+	
+_click(_link("Next: Screening questions"));
+_setValue(_textarea(0), "Question: Yes or No?");
+_setSelected(_select("answer_type_selector"), "Yes or No");
+
+_assertVisible(_cell("Yes"));
+_assertVisible(_cell("No"))
+	
+_click(_link("Logout"));
