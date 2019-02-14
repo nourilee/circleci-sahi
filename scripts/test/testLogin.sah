@@ -11,43 +11,33 @@ function login($user, $password){
 
 // onScriptEnd is a callback called by Sahi when script finishes
 function onScriptEnd(){
-	postTestuff("atest_id", _scriptStatus());
+	var atest_id = "t6dalcuhadbxcyqphgig47qelmb43dmz";
+	
+	// set testuff status to passed only if sahi run is a success
+	var astatus = "failed";
+	if (_scriptStatus() == "SUCCESS"){
+		astatus = "passed";
+	}
+	
+	postTestuff(atest_id, astatus);
 }
  
-function encode(source) {
-	var enc = new Packages.sun.misc.BASE64Encoder();
-	var src = new java.lang.String(source);
-	return (enc.encode(src.getBytes()));
-}
- 
-// Please call the postTestuff method with all its parameter and check.
-// postTestuff("763993f3929542f50a3a0dd2b259876a","passed");
- 
-function postTestuff(test_id, status, steps_failed, steps_passed, steps_blocked,
-lab_name, version, run_configuration, comment, branch_name) {
+function postTestuff(test_id, status) {
 	var login = "nourilee@gmail.com";
-	var password = "a!masterPass19";
-	var authKey = "Testuff API";
-	 
+	var password = "Password1";
+
 	// Replace the X with your server number, as found under Settings-->Company details
-	var url = "https://app.testuff.com/api/v0/run/";
+	var url = "https://service2.testuff.com/api/v0/run/";
 	 
+	// Construct data
 	var data = {
 		"test_id" : test_id,
-		"status" : status,
-		"steps_failed" : steps_failed,
-		"steps_passed" : steps_passed,
-		"steps_blocked" : steps_blocked,
-		"lab_name" : lab_name,
-		"version" : version,
-		"run_configuration" : run_configuration,
-		"branch_name" : branch_name,
-		"comment" : comment
-	}
-	 
+		"status" : status
+	}	
+		
 	var $request = new RESTRequest();
 	$request.setURL(url);
-	$request.setCredentials(login, pass, authKey);
+	$request.setCredentials(login, password);
 	$request.setHeader("Content-Type", "application/json");
 	$request.setHeader("Accept", "application/xml");
 	$request.$body = _sahi.toJSON(data);
@@ -55,5 +45,5 @@ lab_name, version, run_configuration, comment, branch_name) {
 	var $responseCode = $response.getResponseCode();
 	_log("Response code:" + $responseCode);
 	var $body = $response.getBodyAsString(); // returns the response as XML
-	// _log($body);
+	_log($body);
 }
