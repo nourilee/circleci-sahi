@@ -21,19 +21,19 @@ jobs:
             sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:\Program Files\Git\bin && start sh.exe"
             sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:/Users/Administrator/Documents/GitHub/circleci-sahi && git pull origin master";
 
-# Debug
-      - run: 
-          name: Debugging Force Fail
-          command: |
-            set -eo pipefail
-            sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:/Users/Administrator/Documents/GitHub/circleci-sahi && testFail.bat"
-
 # Test execution start here
       - run:
           name: Running testSmoke.suite
           command: |
             set -eo pipefail
             sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:/Users/Administrator/Documents/GitHub/circleci-sahi && testSahi.bat"
+
+# Debug
+      - run: 
+          name: Debugging Force Fail
+          command: |
+            set -eo pipefail
+            sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:/Users/Administrator/Documents/GitHub/circleci-sahi && testFail.bat"
 
 # Store Artifacts
       - store_artifacts:
