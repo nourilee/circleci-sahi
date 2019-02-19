@@ -24,7 +24,8 @@ jobs:
       - run:
           name: Running testSmoke.suite
           command: |
+            set -eo pipefail
             sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:/Users/Administrator/Documents/GitHub/circleci-sahi && testSahi.bat"
-            sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "del C:\temp\testSmoke.log" || true
+
       - store_artifacts:
           path: /tmp/artifacts
