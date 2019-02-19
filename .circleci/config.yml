@@ -11,6 +11,7 @@ jobs:
 
 # Run a step to execute multiple commands on server via sshpass
       - run:
+          name: Pull test scripts from Github
           command: |
             sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:\Program Files\Git\bin && start sh.exe"
             sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:/Users/Administrator/Documents/GitHub/circleci-sahi && git pull origin master";
@@ -20,5 +21,4 @@ jobs:
           command: |
             set -eo pipefail
             sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:\Users\Administrator\sahi_pro\userdata\bin && testrunner.bat testSmoke.suite https://qa.launchpadrecruitsapp.com/login ie" | tee test-output.log
-            
-            
+            cp test-output.log $CIRCLE_ARTIFACTS     
