@@ -4,7 +4,10 @@ jobs:
     machine: true
     steps:
       - checkout
-
+      
+#Debug
+      - run: start testFail.bat
+      
 # Prepare environment for sshpass
       - run: sudo rm /var/lib/apt/lists/lock || true
       - run: sudo apt-get clean && sudo apt-get update && sudo apt-get install sshpass -f 
