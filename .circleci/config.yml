@@ -11,6 +11,11 @@ jobs:
 
 # Run a step to execute multiple commands on server via sshpass
       - run:
+          name: Prepare Artifacts folder
+          command: |
+            mkdir /tmp/artifacts;
+            
+      - run:
           name: Pull test scripts from Github
           command: |
             sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:\Program Files\Git\bin && start sh.exe"
@@ -20,5 +25,13 @@ jobs:
           name: Running testSmoke.suite
           command: |
             set -eo pipefail
-            sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:\Users\Administrator\sahi_pro\userdata\bin && testrunner.bat testSmoke.suite https://qa.launchpadrecruitsapp.com/login ie" | tee test-output.log
-            cp test-output.log $CIRCLE_ARTIFACTS     
+            sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:/Users/Administrator/Documents/GitHub/circleci-sahi && ./testSahi.bat" | tee test-output.log
+            cp test-output.log /tmp/artifacts
+            if grep "FAILED" test-output.log;
+            then
+                 exit 1
+             else
+                 exit 0
+            fi
+      - store_artifacts:
+          path: /tmp/artifacts
