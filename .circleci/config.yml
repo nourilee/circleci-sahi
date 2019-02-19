@@ -24,7 +24,7 @@ jobs:
       - run:
           name: Running testSmoke.suite
           command: |
-            sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:/Users/Administrator/Documents/GitHub/circleci-sahi && ./testSahi.bat" | tee test-output.log
+            sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:/Users/Administrator/Documents/GitHub/circleci-sahi && testSahi.bat" | tee test-output.log
             cp test-output.log /tmp/artifacts
             if [[ grep "FAILED" test-output.log ]]; then
                  exit 1
