@@ -1,0 +1,17 @@
+/*
+	nourilee [at] launchpadrecruits.com
+
+*/
+
+$BASEURL = "https://qa.launchpadrecruitsapp.com";
+
+var $sessionCookie = "_launchpad_session"
+
+// role array - username, password... 
+// $admin is Account Admin
+// $user is User Employer
+var $admin = ["nourilee@launchpadrecruits.com", "IE0EAhZUDBxwNhwdVVw="];
+var $user = ["nourilee+qatest@launchpadrecruits.com", "cRpNF1R6Al53IBkFFjxBNA=="];
+
+// other constant variables
+var $constNextLine = "\n";

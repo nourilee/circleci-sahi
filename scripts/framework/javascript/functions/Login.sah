@@ -1,0 +1,21 @@
+/*
+	nourilee [at] launchpadrecruits.com
+
+*/
+_include("../config.sah");
+_include("../pages/LoginPage.sah");
+
+function verifyPageURL(){
+	loginPage.amIOnPage(loginPage.$url);
+}
+
+function login($userName, $password) {
+	loginPage.setUser($userName);
+	loginPage.setPassword($password);
+	loginPage.clickLogin;
+}
+
+function loginAs($roleArray){
+	loginPage.go();
+	loginPage.login($roleArray[0], $roleArray[1]);
+}

@@ -6,3 +6,4 @@ if %ERRORLEVEL%==0 (
 	del C:\temp\testSmoke.log
 	exit 1
 )
+

@@ -1,0 +1,14 @@
+/*
+	nourilee [at] launchpadrecruits.com
+
+*/
+_include("../config.sah");
+_include("../pages/InterviewsPage.sah");
+
+function verifyPageURL(){
+	interviewsPage.amIOnPage(interviewsPage.$url);
+}
+
+function logout(){
+	interviewsPage.logout();
+}

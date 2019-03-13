@@ -1,0 +1,18 @@
+"Comment","Tags","TestCase","Key Word","Argument 1","Argument 2"
+,,,"loadSahi","../config.sah"
+,,,"loadSahi","../pages/LoginPage.sah"
+,,,"loadSahi","../pages/AdminHomePage.sah"
+,,,"loadSahi","../pages/InterviewsPage.sah"
+
+
+,"auth","testLoginAsAdmin","[Documentation]","This testcase will login as Admin and verify if page is Admin Home page on login"
+"Login as Admin",,,"loginPage.loginAs","$admin"
+"Verify if Login is successful",,,"loginPage.amIOnPage","adminHomePage.$url"
+"Logout",,,"adminHomePage.logout"
+"Verify if Logout is successful",,,"adminHomePage.amIOnPage","loginPage.$url"
+
+,"auth","testLoginAsUser","[Documentation]","This testcase will login as User and verify  if page is Interviews page on login"
+"Login as Admin",,,"loginPage.loginAs","$user"
+"Verify if Login is successful",,,"loginPage.amIOnPage","interviewsPage.$url"
+"Logout",,,"adminHomePage.logout"
+"Verify if Logout is successful",,,"adminHomePage.amIOnPage","loginPage.$url"

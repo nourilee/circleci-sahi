@@ -1,0 +1,12 @@
+"TestCase","Key Word","Argument 1","Argument 2"
+,"loadSahi","../functions/Login.sah"
+
+"[Global]","[SetUp]"
+,"_log","""In Global Setup"""
+,"loginAsAdmin"
+
+,"[TearDown]"
+,"logout"
+,"_log","""In Global Teardown"""
+
+"sampleTestCase","[Documentation]","Add test cases after this line"

@@ -1,0 +1,22 @@
+/*
+	nourilee [at] launchpadrecruits.com
+	
+	Base object for all page objects... 
+	Use prototype to extend in each page object...  
+*/
+
+function BasePage() {
+	
+	this.getCurrentPageURL = function() {
+		return document.location.href;
+	};
+
+	this.amIOnPage = function($targetPageURL) {
+		return _assertEqual($targetPageURL, this.getCurrentPageURL);
+	};
+	
+	this.clearValue = function($element) {
+		_setValue($element, "");
+	};
+	
+}

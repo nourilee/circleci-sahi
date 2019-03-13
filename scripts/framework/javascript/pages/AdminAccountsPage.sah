@@ -1,0 +1,61 @@
+/*
+	nourilee [at] launchpadrecruits.com
+	
+	Admin Accounts Page Object... 
+	Note: for shared pages sections, like a search field or nav bar, 
+	you could make modules or page elements and extend them to pages 
+	that share them... 
+*/
+_include("BasePage.sah");
+
+function AdminAccountsPage() { 
+	// properties: all accessors and data should be abstracted from tests... 
+	this.$url = $BASEURL+"/accounts";
+	this.$tabAccounts = _link("Accounts");
+	this.$textboxUserName = _textbox("user_name");
+	this.$textboxCompanyName = _textbox("company_name");
+	this.$searchButton = _submit("Search");
+
+	// navigate to Accounts tab
+	this.goToAccounts = function() {
+		_click(this.$tabAccounts);
+	}
+		
+	// set value to User name textbox 
+	this.setUserName = function($userName) {
+		_setValue(this.$textboxUserName, $userName);
+	}
+		
+	// set value to Company name textbox 
+	this.setCompanyName = function($companyName) {
+		_setValue(this.$textboxCompanyName, $companyName);
+	}
+		
+	// click Search button
+	this.clickSearch = function() {
+		_click(this.$searchButton);
+	}
+
+	// Check if search text is visible from the search results
+	this.isTextVisibleOnSearchResults = function($searchText) {
+		_assertVisible(_cell($searchText));
+	}
+	
+	// Click On Account
+	this.clickAccount = function($account) {
+		if (this.isTextVisibleOnSearchResults($account)){
+			_click(_cell($account));
+		}
+	}
+		
+	// handle logout from admin/accounts
+	this.logout = function() {
+		_click(this.$logoutButton);
+	}
+		
+}
+
+// extend... 
+AdminAccountsPage.prototype = new BasePage();
+// instatiate... 
+adminAccountsPage = new AdminAccountsPage();

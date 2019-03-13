@@ -1,0 +1,18 @@
+/*
+	nourilee [at] launchpadrecruits.com
+
+*/
+_include("../config.sah");
+_include("../pages/AdminHomePage.sah");
+
+function verifyPageURL(){
+	adminHomePage.amIOnPage(adminHomePage.$url);
+}
+
+function verifyUpdateSuccessful(){
+	adminHomePage.isUpdateSuccessful();
+}
+
+function logout(){
+	adminHomePage.logout();
+}

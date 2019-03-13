@@ -1,0 +1,87 @@
+/*
+	nourilee [at] launchpadrecruits.com
+	
+	Admin Home Page Object... 
+	Note: for shared pages sections, like a search field or nav bar, 
+	you could make modules or page elements and extend them to pages 
+	that share them... 
+*/
+_include("BasePage.sah");
+
+function AdminHomePage() { 
+	// properties: all accessors and data should be abstracted from tests... 
+	this.$url = $BASEURL+"/admin/home";
+	this.$logoutButton = _link("Logout");
+	this.$updateButton = _submit("Update Settings");
+	this.$adminEmailRecipients = _textarea("contact_request_emails");
+	this.$grabGoRecipients = _textarea("grab_n_go_notification_emails");
+	this.$interviewReminderDays = _textbox("interview_reminder_days");
+	this.$interviewReminderDaysSubsequent = _textbox("interview_reminder_days_subsequent");
+	this.$candidateFeedbackEmailDays = _textbox("candidate_feedback_email_days");
+	this.$videoReEncodingMaxDuration = _textbox("video_reencoding_max_duration");
+	this.$questionLTimeLimits = _textarea("question_time_limits");
+	this.$updateMessageNotice = _getText(_div("message_notice"));
+
+	// handle logout from admin/home
+	this.logout = function() {
+		_click(this.$logoutButton);
+	}
+		
+	// handle update settings from admin/home
+	this.clickUpdateSettings = function() {
+		_click(this.$updateButton);
+	}
+		
+	// verify update
+	this.isUpdateSuccessful = function() {
+		return _assertEqual("Updated the admin settings", this.$updateMessageNotice);
+	}
+		
+	// getter: $adminEmailRecipients
+	this.getAdminEmailRecipients = function() {
+		return _getValue( this.$adminEmailRecipients );
+	}
+		
+	// setter: $adminEmailRecipients
+	this.setAdminEmailRecipients = function($value) {
+		_setValue( this.getAdminEmailRecipients() + $constNextLine + $value );
+	}
+
+	// getter: $grabGoRecipients
+	this.getGrabGoRecipients = function() {
+		return _getValue( this.$grabGoRecipients );
+	}
+		
+	// setter: $grabGoRecipients
+	this.setGrabGoRecipients = function($value) {
+		_setValue( this.getGrabGoRecipients() + $constNextLine + $value );
+	}
+
+	// getter: $interviewReminderDays
+	this.getGrabGoRecipients = function() {
+		return _getValue( this.$interviewReminderDays );
+	}
+		
+	// setter: $interviewReminderDays
+	this.setGrabGoRecipients = function($value) {
+		this.clearValue( this.interviewReminderDays );
+		_setValue( this.interviewReminderDays );
+	}
+
+	// getter: $interviewReminderDaysSubsequent
+	this.getInterviewReminderDaysSubsequent = function() {
+		return _getValue( this.$interviewReminderDaysSubsequent );
+	}
+		
+	// setter: $interviewReminderDaysSubsequent
+	this.setInterviewReminderDaysSubsequent = function($value) {
+		this.clearValue( this.interviewReminderDaysSubsequent );
+		_setValue( this.interviewReminderDaysSubsequent );
+	}
+		
+}
+
+// extend... 
+AdminHomePage.prototype = new BasePage();
+// instatiate... 
+adminHomePage = new AdminHomePage();

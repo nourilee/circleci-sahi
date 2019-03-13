@@ -1,0 +1,25 @@
+/*
+	nourilee [at] launchpadrecruits.com
+	
+	Interviews Page Object... 
+	Note: for shared pages sections, like a search field or nav bar, 
+	you could make modules or page elements and extend them to pages 
+	that share them... 
+*/
+_include("BasePage.sah");
+
+function InterviewsPage() { 
+	// properties: all accessors and data should be abstracted from tests... 
+	this.$url = $BASEURL+"/interviews";
+	this.$logoutButton = _link("Logout");
+
+	// handle logout from User/home
+	this.logout = function() {
+		_click(this.$logoutButton);
+	}
+}
+
+// extend... 
+InterviewsPage.prototype = new BasePage();
+// instatiate... 
+interviewsPage = new InterviewsPage();

@@ -1,0 +1,19 @@
+"Comment","Tags","TestCase","Key Word","Argument 1","Argument 2"
+,,,"loadSahi","../functions/Login.sah"
+,,,"loadSahi","../functions/AdminAccounts.sah"
+
+,,"[Global]","[SetUp]"
+,,,"_log","""In Global Setup"""
+"Login as Admin",,,"loginPage.loginAs","$admin"
+
+,,,"[TearDown]"
+,,,"adminHomePage.logout"
+,,,"_log","""In Global Teardown"""
+
+,,"verifyAdminCanSearchAccountByUser","[Documentation]","Search Account by User"
+
+,,,"searchAccountByUser","""QA Automation"""
+
+,,"verifyAdminCanSearchAccountByCompanyName","[Documentation]","Search Account by Company Name"
+
+,,,"searchAccountByCompanyName","""Nouri QA - Automation"""

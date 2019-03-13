@@ -1,0 +1,28 @@
+/*
+	nourilee [at] launchpadrecruits.com
+
+*/
+_include("../config.sah");
+_include("../pages/AdminAccountsPage.sah");
+
+function verifyPageURL(){
+	adminAccountsPage.amIOnPage(adminAccountsPage.$url);
+}
+
+function searchAccountByUser($userName){
+	adminAccountsPage.goToAccounts();
+	adminAccountsPage.setUserName($userName);
+	adminAccountsPage.clickSearch();
+	adminAccountsPage.isTextVisibleOnSearchResults($userName);
+}
+
+function searchAccountByCompanyName($companyName){
+	adminAccountsPage.goToAccounts();
+	adminAccountsPage.setCompanyName($companyName);
+	adminAccountsPage.clickSearch();
+	adminAccountsPage.isTextVisibleOnSearchResults($companyName);
+}
+
+function logout(){
+	adminAccountsPage.logout();
+}

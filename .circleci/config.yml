@@ -28,9 +28,9 @@ jobs:
             set -eo pipefail
             sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:/Users/Administrator/Documents/GitHub/circleci-sahi && testSahi.bat"
 
-# Debug
+# Verify if any of the tests FAILED
       - run: 
-          name: Debugging Force Fail
+          name: Force Fail Pipeline on FAILED tests
           command: |
             set -eo pipefail
             sshpass -p $AUTHENTICATION ssh -o StrictHostKeyChecking=no Administrator@18.130.251.90 "cd C:/Users/Administrator/Documents/GitHub/circleci-sahi && testFail.bat"
